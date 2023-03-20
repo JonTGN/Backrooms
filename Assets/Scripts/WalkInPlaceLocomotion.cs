@@ -13,6 +13,9 @@ public class WalkInPlaceLocomotion : MonoBehaviour
     private Vector3 gravity = new Vector3(0, -9.8f, 0);
 
     [SerializeField] private float speed = 4;
+    [SerializeField] private float velocityTriggerAmount = 0.05f;
+
+    bool hasSwungOnce = false;
 
     void Start()
     {
@@ -27,19 +30,21 @@ public class WalkInPlaceLocomotion : MonoBehaviour
         Vector3 rightHandVelocity = rightHand.transform.position - previousPosRight;
         float totalVelocity =+ leftHandVelocity.magnitude * 0.8f +rightHandVelocity.magnitude * 0.8f;
 
-        if(totalVelocity >= 0.05f) //If true, player has swung their hands
+        if(totalVelocity >= velocityTriggerAmount) //If true, player has swung their hands
         {
+
             //getting the direction that the player is facing
             direction = Camera.main.transform.forward;
 
             //move the player using the character controller
-            characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up));
+            characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up)); 
         }
 
         //Applying gravity
         characterController.Move(gravity * Time.deltaTime);
         SetPreviousPos();
     }
+
 
     void SetPreviousPos()
     {
