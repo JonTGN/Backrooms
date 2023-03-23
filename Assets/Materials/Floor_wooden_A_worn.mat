@@ -10,23 +10,22 @@ Material:
   m_Name: Floor_wooden_A_worn
   m_Shader: {fileID: -6465566751694194690, guid: 12803f30aee67f94d94f3e6f0c1a6f68,
     type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
-  - _OCCLUSIONMAP
+  m_ValidKeywords:
+  - _DISABLE_DECALS
+  - _DISABLE_SSR_TRANSPARENT
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
-  - DistortionVectors
+  - TransparentBackface
   - MOTIONVECTORS
   - TransparentDepthPrepass
   - TransparentDepthPostpass
-  - TransparentBackface
+  - RayTracingPrepass
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -309,11 +308,14 @@ Material:
     - _AlphaCutoffShadow: 0.5
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
+    - _AlphaToMask: 0
+    - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
     - _Blend: 0
     - _BlendMode: 0
     - _BumpScale: 1
     - _CoatMask: 0
+    - _ConservativeDepthOffsetEnable: 0
     - _Cull: 2
     - _CullMode: 2
     - _CullModeForward: 2
@@ -343,14 +345,15 @@ Material:
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
     - _DoubleSidedEnable: 0
-    - _DoubleSidedNormalMode: 1
+    - _DoubleSidedGIMode: 0
+    - _DoubleSidedNormalMode: 2
     - _Drag: 1
     - _DstBlend: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
     - _EmissiveIntensityUnit: 0
-    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnableMotionVectorForVertexAnimation: 0
@@ -383,6 +386,7 @@ Material:
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OcclusionStrength: 1
+    - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
@@ -392,8 +396,10 @@ Material:
     - _PreRefractionPass: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RayTracing: 0
     - _ReceiveShadows: 1
     - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
@@ -422,7 +428,7 @@ Material:
     - _Stiffness: 1
     - _SubsurfaceMask: 1
     - _SupportDBuffer: 1
-    - _SupportDecals: 1
+    - _SupportDecals: 0
     - _Surface: 0
     - _SurfaceType: 0
     - _TexWorldScale: 1
@@ -500,4 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
+  version: 12
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
