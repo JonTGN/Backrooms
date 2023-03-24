@@ -11,6 +11,7 @@ public class VerifyPlayerDistance : MonoBehaviour
     [SerializeField] private GetPlayerAngle getPlayerAngle;
 
     public GameObject elevator;
+    public GameObject ceiling;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class VerifyPlayerDistance : MonoBehaviour
         {
             // hide elevator and show rest of hallway
             elevator.SetActive(false);
+            ceiling.SetActive(true);
             getPlayerAngle.shouldCheckForAngle = false;
         }
     }
