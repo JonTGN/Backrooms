@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WalkInPlaceLocomotion : MonoBehaviour
 {
@@ -17,9 +19,33 @@ public class WalkInPlaceLocomotion : MonoBehaviour
 
     bool hasSwungOnce = false;
 
+    public InputActionReference toggleReferenceRight = null;
+    public InputActionReference toggleReferenceLeft = null;
+
+    private bool leftTriggerPressed;
+    private bool rightTriggerPressed;
+
+    private void Awake()
+    {
+        toggleReferenceLeft.action.started += ToggleLeft;
+        toggleReferenceRight.action.started += ToggleRight;
+        toggleReferenceLeft.action.canceled += ToggleLeft;
+        toggleReferenceRight.action.canceled += ToggleRight;
+    }
+
+    private void OnDestroy()
+    {
+        toggleReferenceLeft.action.started -= ToggleLeft;
+        toggleReferenceRight.action.started -= ToggleRight;
+        toggleReferenceLeft.action.canceled -= ToggleLeft;
+        toggleReferenceRight.action.canceled -= ToggleRight;
+    }
+
     void Start()
     {
         SetPreviousPos();
+        leftTriggerPressed = false;
+        rightTriggerPressed = false;
     }
 
     // Update is called once per frame
@@ -30,14 +56,17 @@ public class WalkInPlaceLocomotion : MonoBehaviour
         Vector3 rightHandVelocity = rightHand.transform.position - previousPosRight;
         float totalVelocity =+ leftHandVelocity.magnitude * 0.8f +rightHandVelocity.magnitude * 0.8f;
 
-        if(totalVelocity >= velocityTriggerAmount) //If true, player has swung their hands
+        if (leftTriggerPressed && rightTriggerPressed)
         {
+            if (totalVelocity >= velocityTriggerAmount) //If true, player has swung their hands
+            {
 
-            //getting the direction that the player is facing
-            direction = Camera.main.transform.forward;
+                //getting the direction that the player is facing
+                direction = Camera.main.transform.forward;
 
-            //move the player using the character controller
-            characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up)); 
+                //move the player using the character controller
+                characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up));
+            }
         }
 
         //Applying gravity
@@ -50,5 +79,15 @@ public class WalkInPlaceLocomotion : MonoBehaviour
     {
         previousPosLeft = leftHand.transform.position;
         previousPosRight= rightHand.transform.position;
+    }
+
+    private void ToggleLeft(InputAction.CallbackContext context)
+    {
+        leftTriggerPressed = !leftTriggerPressed;
+    }
+
+    private void ToggleRight(InputAction.CallbackContext context)
+    {
+        rightTriggerPressed = !rightTriggerPressed;
     }
 }
