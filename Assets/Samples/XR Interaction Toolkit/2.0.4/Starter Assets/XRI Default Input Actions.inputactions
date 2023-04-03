@@ -1101,7 +1101,7 @@
                 {
                     "name": "",
                     "id": "f258761b-8260-483d-854a-76735a7a335e",
-                    "path": "<ViveController>{RightHand}/triggerPressed",
+                    "path": "<XRController>{RightHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1123,7 +1123,7 @@
                 {
                     "name": "",
                     "id": "b4a7f02e-f0c7-4b2e-92a6-54ddd1eee640",
-                    "path": "<ViveController>{LeftHand}/triggerPressed",
+                    "path": "<XRController>{RightHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
