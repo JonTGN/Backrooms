@@ -1073,6 +1073,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "XRI Arm Swing Movement",
+            "id": "17a4cad6-8fb7-4b44-907d-01d80cf9808f",
+            "actions": [
+                {
+                    "name": "Right Trigger Held",
+                    "type": "Button",
+                    "id": "999628bc-2742-4c1b-9af6-ad98fd4b6366",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left Trigger Held",
+                    "type": "Button",
+                    "id": "e21e7f1c-d02a-478e-a2f3-7d2b4c2d1d8a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f258761b-8260-483d-854a-76735a7a335e",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Trigger Held",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a5a8679-5017-4d44-8df6-1103567b4ed1",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerOpenXR>{RightHand}/triggerpressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Trigger Held",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4a7f02e-f0c7-4b2e-92a6-54ddd1eee640",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Trigger Held",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ffccd66-0338-4472-a157-6a2a9a324cd8",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerOpenXR>{LeftHand}/triggerpressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Trigger Held",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
