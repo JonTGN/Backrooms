@@ -8,11 +8,12 @@ public class VerifyPlayerDistance : MonoBehaviour
     float angle;
     bool readyToHide;
     bool isLookingInRightDirection;
-    [SerializeField] private GetPlayerAngle getPlayerAngle;
+    public GetPlayerAngle getPlayerAngle;
+    public light_creak light_Creak;
 
-    public GameObject elevator;
-    public GameObject ceiling;
-    public Lullaby lullaby;
+    public GameObject go_to_hide;
+    public GameObject go_to_show;
+    public AudioSource radio;
     private bool triggerDone;
 
     void Start()
@@ -28,10 +29,11 @@ public class VerifyPlayerDistance : MonoBehaviour
         if (readyToHide && isLookingInRightDirection && !triggerDone)
         {
             // hide elevator and show rest of hallway
-            elevator.SetActive(false);
-            ceiling.SetActive(true);
+            go_to_hide.SetActive(false);
+            go_to_show.SetActive(true);
             getPlayerAngle.shouldCheckForAngle = false;
-            lullaby.StartSong();
+            radio.Play();
+            light_Creak.isActive = true;
             triggerDone = true;
         }
     }
@@ -40,7 +42,7 @@ public class VerifyPlayerDistance : MonoBehaviour
     {
         angle = getPlayerAngle.angle;
 
-        if (angle > 20 && angle < 150)
+        if (angle > 120 && angle < 230)
             isLookingInRightDirection = true;
         else
             isLookingInRightDirection = false;

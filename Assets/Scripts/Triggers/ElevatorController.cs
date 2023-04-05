@@ -10,7 +10,6 @@ public class ElevatorController : MonoBehaviour
     public AudioSource game_start;
 
     public bool skipIntro;
-    public DualLightFlickerJumpscare lightScript;
 
     void Start()
     {
@@ -31,7 +30,6 @@ public class ElevatorController : MonoBehaviour
     void OpenDoor()
     {
         anim.SetBool("open", true);
-        lightScript.shouldStartFlickering = true;
     }
 
     void Ding()
