@@ -24,7 +24,7 @@ public class RadioTrigger : MonoBehaviour
 
             else if (!hasTriggered)
             {
-                radio.volume = 0.8f;
+                radio.volume = 0.4f;
                 radio.clip = heavy_static;
                 radio.Play();
                 hasTriggered = true;

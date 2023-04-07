@@ -15,16 +15,16 @@ public class ElevatorController : MonoBehaviour
     {
         // todo: trigger sounds on anim events
         //Invoke(nameof(Ding), 0.5f);
+        if (skipIntro)
+        {
+            OpenDoor();
+            return;
+        }
+
         game_start.Play();
 
         Invoke(nameof(OpenSound), 61);
         Invoke(nameof(OpenDoor), 61);
-
-        if (skipIntro)
-        {
-            OpenDoor();
-            CancelInvoke();
-        }
     }
 
     void OpenDoor()
