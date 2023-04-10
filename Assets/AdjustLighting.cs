@@ -18,7 +18,7 @@ public class AdjustLighting : MonoBehaviour
             {
                 // turn each light to red
                 light.color = redEmission;
-                light.intensity += 50;
+                light.intensity += 5;
             }
 
             foreach (GameObject lightEmission in lightEmissions)
