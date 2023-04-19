@@ -323,7 +323,7 @@ Material:
     - Color_389D511C: {r: 1, g: 1, b: 1, a: 1}
     - Color_3CFDA1BC: {r: 1, g: 1, b: 1, a: 1}
     - Color_7FF4BAD2: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
-    - Color_9A6C2636: {r: 1, g: 0.9864643, b: 0.8443396, a: 1}
+    - Color_9A6C2636: {r: 0.9716981, g: 0.9625939, b: 0.8387771, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
