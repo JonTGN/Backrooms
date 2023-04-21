@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4514899015985890029}
   - component: {fileID: 3185652667881627099}
   m_Layer: 0
-  m_Name: Light
+  m_Name: Light_No_Height
   m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,6 +53,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4514899015985890029}
     m_Modifications:
+    - target: {fileID: 5305519722994006267, guid: 3904378d8ad7f9c4794f16d5a524ad89,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305519723705213331, guid: 3904378d8ad7f9c4794f16d5a524ad89,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5305519724787841851, guid: 3904378d8ad7f9c4794f16d5a524ad89,
         type: 3}
       propertyPath: m_RootOrder
@@ -66,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 5305519724787841851, guid: 3904378d8ad7f9c4794f16d5a524ad89,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.91
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5305519724787841851, guid: 3904378d8ad7f9c4794f16d5a524ad89,
         type: 3}

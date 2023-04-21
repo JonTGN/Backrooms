@@ -78,7 +78,12 @@ public class GenerationManager : MonoBehaviour
                 switch (currentState)
                 {
                     case GenerationState.GeneratingRooms:
-                        GeneratedRooms.Add(Instantiate(RoomTypes[Random.Range(0, RoomTypes.Count)], currentPos, Quaternion.identity, WorldGrid));
+                        Quaternion roomRotation = Quaternion.identity;
+                        int rot = Random.Range(0, 4);
+
+                        roomRotation *= Quaternion.Euler(Vector3.up * (90 * rot)); // rotate the room 0/90/180/270 degrees
+
+                        GeneratedRooms.Add(Instantiate(RoomTypes[Random.Range(0, RoomTypes.Count)], currentPos, roomRotation, WorldGrid));
                     break;
 
                     case GenerationState.GeneratingLighting:
