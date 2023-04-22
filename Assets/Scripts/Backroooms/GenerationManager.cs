@@ -103,17 +103,29 @@ public class GenerationManager : MonoBehaviour
             switch (currentState)
             {
                 case GenerationState.GeneratingSpawn:
-                    int roomToReplace = Random.Range(0, GeneratedRooms.Count);
-
-                    spawnRoom = Instantiate(SpawnRoom, GeneratedRooms[roomToReplace].transform.position, Quaternion.identity, WorldGrid);
-
-                    Destroy(GeneratedRooms[roomToReplace]);
-
-                    GeneratedRooms[roomToReplace] = spawnRoom;
-
+                    PickSpawnRoom();
                     break;
             }
         }
+    }
+
+    private void PickSpawnRoom()
+    {
+        int roomToReplace = Random.Range(0, GeneratedRooms.Count - mapSizeSqr - 1);
+        // spawn empty room right under this room, cap spawn room gen so it doesn't gen on bottom row
+
+        // spawn empty room directly in direction of spawn rooms doorway to ensure 100% exit
+        int roomToReplaceWithEmpty = roomToReplace + 9;
+
+        spawnRoom = Instantiate(SpawnRoom, GeneratedRooms[roomToReplace].transform.position, Quaternion.identity, WorldGrid);
+        Destroy(GeneratedRooms[roomToReplace]);
+
+        // spawn empty room at correct spot
+        var empty = Instantiate(EmptyRoom, GeneratedRooms[roomToReplaceWithEmpty].transform.position, Quaternion.identity, WorldGrid);
+        Destroy(GeneratedRooms[roomToReplaceWithEmpty]);
+
+        GeneratedRooms[roomToReplaceWithEmpty] = empty;
+        GeneratedRooms[roomToReplace] = spawnRoom;
     }
 
     public GameObject spawnRoom;
