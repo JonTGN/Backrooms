@@ -67,10 +67,10 @@ public class GenerationManager : MonoBehaviour
             {
                 if (currentPosTracker == mapSizeSqr)
                 {
-                    currentPosX = 0;
+                    currentPosX = WorldGrid.position.x;
                     currentPosTracker = 0;
 
-                    currentPosZ += roomSize;
+                    currentPosZ += roomSize + WorldGrid.position.z;
                 }
 
                 currentPos = new(currentPosX, 0, currentPosZ);
