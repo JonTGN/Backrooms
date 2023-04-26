@@ -9,17 +9,16 @@ public enum GenerationState
     Idle,
     GeneratingRooms,
     GeneratingLighting,
-
     GeneratingSpawn
 }
 
 public class GenerationManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Transform WorldGrid;
+    public Transform WorldGrid;
     [SerializeField] List<GameObject> RoomTypes;
     [SerializeField] List<GameObject> LightTypes;
-    [SerializeField] int mapSize = 16;
+    [SerializeField] int mapSize = 81;
     [SerializeField] Slider MapSizeSlider, EmptinessSlider, BrightnessSlider;
     [SerializeField] Button GenerateButton;
     [SerializeField] GameObject EmptyRoom;
@@ -28,23 +27,31 @@ public class GenerationManager : MonoBehaviour
     [SerializeField] GameObject PlayerObject, MainCameraObject;
     
     [Header("Settings")]
-    public int mapEmptiness; // chance of empty room spawning
-    public int mapBrightness; // chance of light spawning
-    private int mapSizeSqr; 
+    public int mapEmptiness = 4; // chance of empty room spawning
+    public int mapBrightness = 4; // chance of light spawning
+    private int mapSizeSqr = 9; 
     private float currentPosX, currentPosZ, currentPosTracker; // keep track of room gen pos
     public float roomSize = 7;
     private Vector3 currentPos; // current pos of room to be gen
     public GenerationState currentState; // current gen state
 
-    private void Update()
+    private void Update()  // ui necessary for testing, not so much anymore
     {
-        mapSize = (int)Mathf.Pow(MapSizeSlider.value, 4);
+        //mapSize = (int)Mathf.Pow(MapSizeSlider.value, 4);
 
-        mapSizeSqr = (int)Mathf.Sqrt(mapSize);
+        //mapSizeSqr = (int)Mathf.Sqrt(mapSize);
 
-        mapEmptiness = (int)EmptinessSlider.value;
+        //mapEmptiness = (int)EmptinessSlider.value;
 
-        mapBrightness = (int)BrightnessSlider.value;
+        //mapBrightness = (int)BrightnessSlider.value;
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < mapEmptiness; i++)
+        {
+            RoomTypes.Add(EmptyRoom);
+        }
     }
   
     public void ReloadWorld()
@@ -52,14 +59,14 @@ public class GenerationManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void GenerateWorld()
+    public void GenerateWorld(bool initLoad = false)
     {
-        for (int i = 0; i < mapEmptiness; i++)
-        {
-            RoomTypes.Add(EmptyRoom);
-        }
+        GeneratedRooms = new List<GameObject>();
+        //Debug.Log("gen world...");
+        //Debug.Log("world pos: " + WorldGrid.position.x + ", " + WorldGrid.position.z);
 
-        GenerateButton.interactable = false;
+        currentPosX = WorldGrid.position.x;
+        currentPosZ = WorldGrid.position.z;
 
         for (int state = 0; state < 5; state++)
         {
@@ -70,14 +77,19 @@ public class GenerationManager : MonoBehaviour
                     currentPosX = WorldGrid.position.x;
                     currentPosTracker = 0;
 
-                    currentPosZ += roomSize + WorldGrid.position.z;
+                    currentPosZ += roomSize;
+                    //Debug.Log("new x: " + currentPosX);
+                    //Debug.Log("new z: " + currentPosZ);
                 }
 
                 currentPos = new(currentPosX, 0, currentPosZ);
+                //Debug.Log("Spawned room at: " + currentPos.x + ", " + currentPos.z);
 
                 switch (currentState)
                 {
                     case GenerationState.GeneratingRooms:
+                        //if (i == 0) Debug.Log("current pos: " + currentPos.x + ", " + currentPos.z);
+
                         Quaternion roomRotation = Quaternion.identity;
                         int rot = Random.Range(0, 4);
 
@@ -103,10 +115,12 @@ public class GenerationManager : MonoBehaviour
             switch (currentState)
             {
                 case GenerationState.GeneratingSpawn:
-                    PickSpawnRoom();
+                    if (initLoad) PickSpawnRoom();
                     break;
             }
         }
+
+        currentState = GenerationState.Idle;
     }
 
     private void PickSpawnRoom()
@@ -144,9 +158,9 @@ public class GenerationManager : MonoBehaviour
     {
         currentState++;
 
-        currentPosX = 0;
-        currentPosZ = 0;
+        currentPosX = WorldGrid.position.x;
+        currentPosZ = WorldGrid.position.z;
         currentPosTracker = 0;
-        currentPos = Vector3.zero;
+        currentPos = WorldGrid.position;
     }
 }
