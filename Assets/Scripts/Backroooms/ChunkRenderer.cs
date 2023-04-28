@@ -9,13 +9,19 @@ public class ChunkRenderer : MonoBehaviour
     public GameObject WorldGrid;
     public Transform WorldGridParents;
 
+    private bool alreadySpawnedElevator;
+
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == LevelTag)
         {
             genMngr.WorldGrid = other.gameObject.transform;
-            genMngr.GenerateWorld();
+
+            if (!alreadySpawnedElevator && other.gameObject.transform.position.x == 0 && other.gameObject.transform.position.z == 0)
+                genMngr.GenerateWorld(true);
+            else
+                genMngr.GenerateWorld();
         }
     }
 

@@ -61,6 +61,7 @@ public class GenerationManager : MonoBehaviour
 
     public void GenerateWorld(bool initLoad = false)
     {
+        Debug.Log("generating room...");
         GeneratedRooms = new List<GameObject>();
         //Debug.Log("gen world...");
         //Debug.Log("world pos: " + WorldGrid.position.x + ", " + WorldGrid.position.z);
@@ -101,7 +102,7 @@ public class GenerationManager : MonoBehaviour
                     case GenerationState.GeneratingLighting:
                         int lightSpawn = Random.Range(-1, mapBrightness);
 
-                        if (lightSpawn == 0)
+                        if (lightSpawn == 0 && (currentPos.x != 0 && currentPos.z != 0))
                             Instantiate(LightTypes[Random.Range(0, LightTypes.Count)], currentPos, Quaternion.identity, WorldGrid);
                     break;
                 }
@@ -125,7 +126,7 @@ public class GenerationManager : MonoBehaviour
 
     private void PickSpawnRoom()
     {
-        int roomToReplace = Random.Range(0, GeneratedRooms.Count - mapSizeSqr - 1);
+        int roomToReplace = 0; //Random.Range(0, GeneratedRooms.Count - mapSizeSqr - 1);
         // spawn empty room right under this room, cap spawn room gen so it doesn't gen on bottom row
 
         // spawn empty room directly in direction of spawn rooms doorway to ensure 100% exit

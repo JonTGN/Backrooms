@@ -12,8 +12,8 @@ public class GameStart : MonoBehaviour
 
     void Start()
     {
-        genMngr.WorldGrid = WorldGrid;
-        genMngr.GenerateWorld(true); // gen chunk w/ spawn room in it
+        //genMngr.WorldGrid = WorldGrid;
+        //genMngr.GenerateWorld(true); // gen chunk w/ spawn room in it
 
         player.SetActive(true);
         oldCamera.SetActive(false);
