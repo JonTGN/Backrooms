@@ -9,6 +9,7 @@ TagManager:
   - LightPlaceholder
   - Light
   - Level
+  - Elevator
   layers:
   - Default
   - TransparentFX

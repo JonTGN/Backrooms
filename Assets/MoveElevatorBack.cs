@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MoveElevatorBack : MonoBehaviour
+{
+    public GameObject Player;
+    public int moveAwayDistance = 24;
+
+    void Update()
+    {
+        var distance = Vector3.Distance(Player.transform.position, this.transform.position);
+        //Debug.Log("distance: " + distance);
+
+        if (distance < moveAwayDistance)
+        {
+            var elevator = this.gameObject.transform.position;
+            var newPos = new Vector3(elevator.x, 0, elevator.z - (moveAwayDistance - distance));
+            this.gameObject.transform.position = newPos;
+        }
+    }
+}
