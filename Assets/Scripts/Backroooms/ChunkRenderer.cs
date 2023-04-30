@@ -18,10 +18,13 @@ public class ChunkRenderer : MonoBehaviour
         {
             genMngr.WorldGrid = other.gameObject.transform;
 
-            if (!alreadySpawnedElevator && other.gameObject.transform.position.x == 0 && other.gameObject.transform.position.z == 0)
+            if (!alreadySpawnedElevator)
+            {
                 genMngr.GenerateWorld(true);
+                alreadySpawnedElevator = true;
+            }
             else
-                genMngr.GenerateWorld();
+                genMngr.GenerateWorld(false);
         }
     }
 

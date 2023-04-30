@@ -59,9 +59,9 @@ public class GenerationManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void GenerateWorld(bool initLoad = false)
+    public void GenerateWorld(bool initLoad)
     {
-        Debug.Log("generating room...");
+        //Debug.Log("generating room...");
         GeneratedRooms = new List<GameObject>();
         //Debug.Log("gen world...");
         //Debug.Log("world pos: " + WorldGrid.position.x + ", " + WorldGrid.position.z);
@@ -124,8 +124,9 @@ public class GenerationManager : MonoBehaviour
         currentState = GenerationState.Idle;
     }
 
-    private void PickSpawnRoom()
+    public void PickSpawnRoom()
     {
+        Debug.Log("picking spawn...");
         int roomToReplace = 0; //Random.Range(0, GeneratedRooms.Count - mapSizeSqr - 1);
         // spawn empty room right under this room, cap spawn room gen so it doesn't gen on bottom row
 
@@ -141,13 +142,15 @@ public class GenerationManager : MonoBehaviour
 
         GeneratedRooms[roomToReplaceWithEmpty] = empty;
         GeneratedRooms[roomToReplace] = spawnRoom;
+
+        SpawnPlayer();
     }
 
     public GameObject spawnRoom;
 
     public void SpawnPlayer()
     {
-        PlayerObject.SetActive(false);
+        //PlayerObject.SetActive(false);
 
         PlayerObject.transform.position = spawnRoom.transform.position;
 
