@@ -15,7 +15,7 @@ public class ChunkRenderer : MonoBehaviour
     public LayerMask normalRoom, worldGrid;
 
     private bool alreadySpawnedElevator;
-    private bool shouldSpawnHallway;
+    public bool shouldSpawnHallway;
     private bool hallwayIsSpawned;
     private Vector3 worldGridHallwayIsSpawnedUnder;
     public GameObject infiniteHallwayReferenceInScene;  // destroy this when unloading chunk (instaniate to world grid parent!!)
