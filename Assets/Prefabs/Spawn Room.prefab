@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7532839786027106663}
   - component: {fileID: 2997718533823598979}
   - component: {fileID: 87080790346383036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 7676987347535075212}
   - component: {fileID: 6301857736107704600}
   - component: {fileID: 5950495175818959228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: roof_new001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 590856395213165273}
   - component: {fileID: 8781598427945953337}
   - component: {fileID: 6367176129603937596}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: doors001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 5793792584624154915}
   - component: {fileID: 1881729082555558489}
   - component: {fileID: 1497746191255415346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 4488822535237900512}
   - component: {fileID: 7419915711972972986}
   - component: {fileID: 8202834503246449863}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: glass001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 6741024711944476361}
   - component: {fileID: 6215909264260970690}
   - component: {fileID: 6778380283843859233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (bottom)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081071663293145349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1102,7 @@ GameObject:
   - component: {fileID: 1081071663493049569}
   - component: {fileID: 1081071663493049568}
   - component: {fileID: 1081071663493049575}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (bottom)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1446,7 +1446,7 @@ GameObject:
   - component: {fileID: 1081071664542388412}
   - component: {fileID: 1081071664542388419}
   - component: {fileID: 1081071664542388418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,7 +1789,7 @@ GameObject:
   - component: {fileID: 2714295027413354666}
   - component: {fileID: 1306000028415111612}
   - component: {fileID: 5144507741079893654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Buttons_bot001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1870,7 +1870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650798557940061867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spawn Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1911,7 +1911,7 @@ GameObject:
   - component: {fileID: 6771644333496315228}
   - component: {fileID: 1064327047643287973}
   - component: {fileID: 7338620906915256040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor_3x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2038,7 +2038,7 @@ GameObject:
   - component: {fileID: 7466424932678093539}
   - component: {fileID: 6239412822557295486}
   - component: {fileID: 7497891002234904852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x) (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2382,7 +2382,7 @@ GameObject:
   - component: {fileID: 5656378158531526041}
   - component: {fileID: 8371827135673726163}
   - component: {fileID: 4281709628398023353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2723,7 +2723,7 @@ GameObject:
   - component: {fileID: 5203210949671100937}
   - component: {fileID: 436553787278697593}
   - component: {fileID: 3237782898880320538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2942,7 +2942,7 @@ GameObject:
   - component: {fileID: 4909304310815052802}
   - component: {fileID: 8641350344122884867}
   - component: {fileID: 3105537769021415617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ElevatorTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3055,7 +3055,7 @@ GameObject:
   - component: {fileID: 7433138518385303074}
   - component: {fileID: 3754693064101913307}
   - component: {fileID: 3714376186947284683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling_3x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3178,7 +3178,7 @@ GameObject:
   - component: {fileID: 3615491725079417325}
   - component: {fileID: 6849674522361154664}
   - component: {fileID: 607222009128687530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3278,7 +3278,7 @@ GameObject:
   - component: {fileID: 196925714258970281}
   - component: {fileID: 6034316396166068258}
   - component: {fileID: 6438417393285128589}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x) (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3622,7 +3622,7 @@ GameObject:
   - component: {fileID: 6056727302574815328}
   - component: {fileID: 7427682369447209441}
   - component: {fileID: 6154524711990416363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (bottom)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3966,7 +3966,7 @@ GameObject:
   - component: {fileID: 5478029973020598889}
   - component: {fileID: 7261363920475501617}
   - component: {fileID: 781790334205167538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (bottom)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4307,7 +4307,7 @@ GameObject:
   - component: {fileID: 7559136608856928601}
   - component: {fileID: 4117945143897892606}
   - component: {fileID: 3581974672842825258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ElevatorCallingButtons (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4394,7 +4394,7 @@ GameObject:
   - component: {fileID: 4485467845698587188}
   - component: {fileID: 98885206298332041}
   - component: {fileID: 8692201916724039197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (bottom)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4735,7 +4735,7 @@ GameObject:
   - component: {fileID: 2059319638449761622}
   - component: {fileID: 3597243564289656506}
   - component: {fileID: 5314302793120449608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Panel001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4818,7 +4818,7 @@ GameObject:
   - component: {fileID: 4330423097621275918}
   - component: {fileID: 5621178395180705884}
   - component: {fileID: 3259625721625305198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Buttons_top001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4904,7 +4904,7 @@ GameObject:
   - component: {fileID: 4740833230290480558}
   - component: {fileID: 1677567807297464658}
   - component: {fileID: 5715225737623548510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5248,7 +5248,7 @@ GameObject:
   - component: {fileID: 5207328936635882929}
   - component: {fileID: 7999514491813828798}
   - component: {fileID: 7330430453369668731}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5590,7 +5590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4590937999172253230}
   - component: {fileID: 2685638509077706140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5656,7 +5656,7 @@ GameObject:
   - component: {fileID: 4331658262483608038}
   - component: {fileID: 50868297453441578}
   - component: {fileID: 2932292630692004420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling_visualizationhelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5754,7 +5754,7 @@ GameObject:
   - component: {fileID: 6202300407249823411}
   - component: {fileID: 4311937849649920667}
   - component: {fileID: 3195348299677439007}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x) (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6100,7 +6100,7 @@ GameObject:
   - component: {fileID: 493897114609674189}
   - component: {fileID: 2264320288714652716}
   - component: {fileID: 1289327358273673624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6446,7 +6446,7 @@ GameObject:
   - component: {fileID: 6784306294083472173}
   - component: {fileID: 1802666022858577118}
   - component: {fileID: 1080531176944918576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6786,7 +6786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1977956697900184353}
   - component: {fileID: 535851273240934983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6918,7 +6918,7 @@ GameObject:
   - component: {fileID: 4272995137901507294}
   - component: {fileID: 4896503050288043480}
   - component: {fileID: 344714296170215510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7394,6 +7394,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallIn_B_3x_door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8608973241083968291, guid: 4be7a7a2b77c4104b9f2e7a619d2fcc5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8608973241083968291, guid: 4be7a7a2b77c4104b9f2e7a619d2fcc5,
         type: 3}

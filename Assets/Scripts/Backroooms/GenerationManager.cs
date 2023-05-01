@@ -16,15 +16,17 @@ public class GenerationManager : MonoBehaviour
 {
     [Header("References")]
     public Transform WorldGrid;
-    [SerializeField] List<GameObject> RoomTypes;
+    public List<GameObject> RoomTypes;
     [SerializeField] List<GameObject> LightTypes;
     [SerializeField] int mapSize = 81;
     [SerializeField] Slider MapSizeSlider, EmptinessSlider, BrightnessSlider;
     [SerializeField] Button GenerateButton;
-    [SerializeField] GameObject EmptyRoom;
+    public GameObject EmptyRoom;
     [SerializeField] GameObject SpawnRoom;
     public List<GameObject> GeneratedRooms; // store generated rooms to replace w/ spawn
+    public List<GameObject> HiddenRooms; // rooms that would have generated if hallway wasn't present, store in case hallway despawns
     [SerializeField] GameObject PlayerObject, MainCameraObject;
+    public LayerMask hallwayLayer;
     
     [Header("Settings")]
     public int mapEmptiness = 4; // chance of empty room spawning
@@ -34,6 +36,7 @@ public class GenerationManager : MonoBehaviour
     public float roomSize = 7;
     private Vector3 currentPos; // current pos of room to be gen
     public GenerationState currentState; // current gen state
+    public bool ReadyToGenerateHall;
 
     private void Update()  // ui necessary for testing, not so much anymore
     {
@@ -96,7 +99,28 @@ public class GenerationManager : MonoBehaviour
 
                         roomRotation *= Quaternion.Euler(Vector3.up * (90 * rot)); // rotate the room 0/90/180/270 degrees
 
-                        GeneratedRooms.Add(Instantiate(RoomTypes[Random.Range(0, RoomTypes.Count)], currentPos, roomRotation, WorldGrid));
+                        // make sure hallway is not blocking room spawn pos
+                        //Collider[] cols = Physics.OverlapSphere(currentPos, 0.5f, collisionLayer);
+                        //foreach (var hc in cols)
+                        //{
+                        //    Debug.Log("hc: " + hc.gameObject.name);
+                        //}
+
+                        // check for hallway present before gen if hallway is ready to spawn else just spawn to save perf early on
+                        //if (ReadyToGenerateHall)
+                        //    if (!Physics.CheckSphere(currentPos, 0.5f, collisionLayer))
+                        //        GeneratedRooms.Add(Instantiate(RoomTypes[Random.Range(0, RoomTypes.Count)], currentPos, roomRotation, WorldGrid));
+
+                        //else
+
+                        // need to make sure new rooms don't spawn on top of already generated rooms
+                        //string[] roomLayers = {"normalRoomCollider", "hallwayCollider"};
+                        //int hallAndRoomLayers = LayerMask.GetMask(roomLayers);
+
+                        if (!Physics.CheckSphere(currentPos, 0.5f, hallwayLayer))
+                            GeneratedRooms.Add(Instantiate(RoomTypes[Random.Range(0, RoomTypes.Count)], currentPos, roomRotation, WorldGrid));
+                        //else // store room positions in case hallway despawns
+                        //    HiddenRooms.Add(Instantiate(RoomTypes[Random.Range(0, RoomTypes.Count)], currentPos, roomRotation, WorldGrid));
                     break;
 
                     case GenerationState.GeneratingLighting:
@@ -109,6 +133,12 @@ public class GenerationManager : MonoBehaviour
 
                 currentPosTracker++;
                 currentPosX += roomSize;
+            }
+
+            if (currentState == GenerationState.GeneratingRooms)
+            {
+                foreach (var room in HiddenRooms)
+                    room.SetActive(false);
             }
 
             NextState();
@@ -143,7 +173,7 @@ public class GenerationManager : MonoBehaviour
         GeneratedRooms[roomToReplaceWithEmpty] = empty;
         GeneratedRooms[roomToReplace] = spawnRoom;
 
-        SpawnPlayer();
+        Invoke(nameof(SpawnPlayer), 3f);
     }
 
     public GameObject spawnRoom;

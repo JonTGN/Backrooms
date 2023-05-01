@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1081071662441523728}
   - component: {fileID: 1081071662441523735}
   - component: {fileID: 1081071662441523734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081071663293145349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1081071663493049569}
   - component: {fileID: 1081071663493049568}
   - component: {fileID: 1081071663493049575}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (bottom)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 1081071664542388412}
   - component: {fileID: 1081071664542388419}
   - component: {fileID: 1081071664542388418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650798557940061867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RoomType_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 6771644333496315228}
   - component: {fileID: 1064327047643287973}
   - component: {fileID: 7338620906915256040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor_3x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 7433138518385303074}
   - component: {fileID: 3754693064101913307}
   - component: {fileID: 3714376186947284683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling_3x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 4331658262483608038}
   - component: {fileID: 50868297453441578}
   - component: {fileID: 2932292630692004420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling_visualizationhelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

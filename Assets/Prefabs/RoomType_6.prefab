@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081071663293145349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650798557940061867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RoomType_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 6771644333496315228}
   - component: {fileID: 1064327047643287973}
   - component: {fileID: 7338620906915256040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor_3x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 6882982405751478736}
   - component: {fileID: 4674954196976195581}
   - component: {fileID: 5668934588728660965}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (bottom)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 7433138518385303074}
   - component: {fileID: 3754693064101913307}
   - component: {fileID: 3714376186947284683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling_3x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 3503782233750611081}
   - component: {fileID: 2402830102590932205}
   - component: {fileID: 3433787402748729826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (bottom)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 4924101510172424135}
   - component: {fileID: 6298669710786012398}
   - component: {fileID: 519744933197806317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 4671173470945895209}
   - component: {fileID: 6528369594294156487}
   - component: {fileID: 9000506484722036841}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1707,7 +1707,7 @@ GameObject:
   - component: {fileID: 4331658262483608038}
   - component: {fileID: 50868297453441578}
   - component: {fileID: 2932292630692004420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling_visualizationhelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1805,7 +1805,7 @@ GameObject:
   - component: {fileID: 1033064662110203917}
   - component: {fileID: 7987498931714641849}
   - component: {fileID: 5455688069563086855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2149,7 +2149,7 @@ GameObject:
   - component: {fileID: 7346769947959240969}
   - component: {fileID: 6448756391947089388}
   - component: {fileID: 4899164167578505933}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3x) (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

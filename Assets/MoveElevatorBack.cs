@@ -7,6 +7,11 @@ public class MoveElevatorBack : MonoBehaviour
     public GameObject Player;
     public int moveAwayDistance = 24;
 
+    void Start()
+    {
+        Player = Camera.main.gameObject; // get ref to plr when hallway is spawning in
+    }
+
     void Update()
     {
         var distance = Vector3.Distance(Player.transform.position, this.transform.position);
