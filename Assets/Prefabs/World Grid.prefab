@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5727757018439631704}
   - component: {fileID: 5727757018439631707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: World Grid
   m_TagString: Level
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 5727757019078348602}
   - component: {fileID: 5727757019078348603}
   - component: {fileID: 5727757019078348600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

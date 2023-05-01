@@ -173,7 +173,7 @@ public class GenerationManager : MonoBehaviour
         GeneratedRooms[roomToReplaceWithEmpty] = empty;
         GeneratedRooms[roomToReplace] = spawnRoom;
 
-        Invoke(nameof(SpawnPlayer), 3f);
+        Invoke(nameof(SpawnPlayer), 0f);
     }
 
     public GameObject spawnRoom;
