@@ -7,13 +7,14 @@ public class ReplaceLightsWhenClose : MonoBehaviour
     public string OriginalTag;
     public string LightTag;
     public GameObject lightGameObject;
+    public GameObject GeneratedLightsParent;
 
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == OriginalTag)
         {
-            Instantiate(lightGameObject, other.transform.position, other.transform.rotation);
+            Instantiate(lightGameObject, other.transform.position, other.transform.rotation, GeneratedLightsParent.transform);
             other.gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
     }
