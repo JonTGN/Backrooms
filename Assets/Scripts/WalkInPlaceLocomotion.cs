@@ -32,6 +32,8 @@ public class WalkInPlaceLocomotion : MonoBehaviour
     public AudioClip[] footsteps;
     public AudioSource footstepsSource;
 
+    private bool wasLeftHandUp = false;
+
     private void Awake()
     {
         toggleReferenceLeft.action.started += ToggleLeft;
@@ -53,6 +55,7 @@ public class WalkInPlaceLocomotion : MonoBehaviour
         SetPreviousPos();
         leftTriggerPressed = false;
         rightTriggerPressed = false;
+
     }
 
     // Update is called once per frame
@@ -63,8 +66,8 @@ public class WalkInPlaceLocomotion : MonoBehaviour
             //Calculate the velocity of the player hand movement
             Vector3 leftHandVelocity = leftHand.transform.position - previousPosLeft;
             Vector3 rightHandVelocity = rightHand.transform.position - previousPosRight;
-            float totalVelocity = +leftHandVelocity.magnitude * 0.8f + rightHandVelocity.magnitude * 0.8f;
-            Debug.Log(totalVelocity);
+            float totalVelocity = leftHandVelocity.magnitude * 0.8f + rightHandVelocity.magnitude * 0.8f;
+            //Debug.Log(totalVelocity);
 
             if (totalVelocity >= velocityRunTriggerAmount) //If true, player has swung their hands
             {
@@ -82,6 +85,18 @@ public class WalkInPlaceLocomotion : MonoBehaviour
 
                 //move the player using the character controller
                 characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up));
+            }
+
+            if((rightHand.transform.position.y < leftHand.transform.position.y) && !wasLeftHandUp) //right hand has moved above left
+            {
+                //Debug.Log("Change in hands!");
+                wasLeftHandUp = true;
+                PlayStep();
+            } else if((rightHand.transform.position.y > leftHand.transform.position.y) && wasLeftHandUp) //right hand has moved below left
+            {
+                //Debug.Log("Change in hands!");
+                wasLeftHandUp = false;
+                PlayStep();
             }
         }
 
@@ -105,5 +120,11 @@ public class WalkInPlaceLocomotion : MonoBehaviour
     private void ToggleRight(InputAction.CallbackContext context)
     {
         rightTriggerPressed = !rightTriggerPressed;
+    }
+
+    private void PlayStep()
+    {
+        footstepsSource.clip = footsteps[UnityEngine.Random.Range(0, footsteps.Length)];
+        footstepsSource.Play();
     }
 }
