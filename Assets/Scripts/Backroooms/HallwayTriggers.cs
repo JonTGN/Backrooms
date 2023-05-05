@@ -14,6 +14,8 @@ public class HallwayTriggers : MonoBehaviour
     public Light light1;
     public AudioSource LightBulbInHallwayAS;
     public GameObject GeneratedLightsParent;
+    public Animator MonsterAnim;
+    public MonsterChase monsterChase;
 
     private bool alreadyPlayed;
 
@@ -35,10 +37,22 @@ public class HallwayTriggers : MonoBehaviour
 
             StartCoroutine(DestroyLights());
 
+            // remove area around hallway to extend it
+            Player.GetComponentInChildren<ChunkRenderer>().RemoveOutsideLevel();
+
             // disable chunk renderer
             Player.GetComponentInChildren<ChunkRenderer>().gameObject.SetActive(false);
             Player.GetComponentInChildren<ReplaceLightsWhenClose>().gameObject.SetActive(false);
+
+            Invoke(nameof(StartMonsterChase), 3f);
         }
+    }
+
+    private void StartMonsterChase()
+    {
+        MonsterAnim.SetBool("charge", true);
+        
+        monsterChase.ShouldChase = true;
     }
 
     public IEnumerator DestroyLights()

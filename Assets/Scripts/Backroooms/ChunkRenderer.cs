@@ -130,4 +130,15 @@ public class ChunkRenderer : MonoBehaviour
             WorldGridsSpawned.Remove(other.gameObject.transform.position);
         }
     }
+
+    public void RemoveOutsideLevel()
+    {
+        var HallStartPos = new Vector3(worldGridHallwayIsSpawnedUnder.x, worldGridHallwayIsSpawnedUnder.y, worldGridHallwayIsSpawnedUnder.z -3);
+        Collider[] RoomsToRemove = Physics.OverlapSphere(HallStartPos, 50, normalRoom);
+
+        foreach (var room in RoomsToRemove)
+        {
+            Destroy(room.gameObject);
+        }
+    }
 }
