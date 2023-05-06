@@ -6,6 +6,11 @@ TagManager:
   tags:
   - keycard
   - hit
+  - LightPlaceholder
+  - Light
+  - Level
+  - Elevator
+  - GeneratedLightsTag
   layers:
   - Default
   - TransparentFX
@@ -13,10 +18,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Light
+  - hallwayCollider
+  - normalRoomCollider
+  - worldGrid
   - 
   - 
   - 

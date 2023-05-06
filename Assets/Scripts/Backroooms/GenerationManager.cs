@@ -173,7 +173,7 @@ public class GenerationManager : MonoBehaviour
         GeneratedRooms[roomToReplaceWithEmpty] = empty;
         GeneratedRooms[roomToReplace] = spawnRoom;
 
-        Invoke(nameof(SpawnPlayer), 3f);
+        Invoke(nameof(SpawnPlayer), 0f);
     }
 
     public GameObject spawnRoom;
@@ -181,8 +181,12 @@ public class GenerationManager : MonoBehaviour
     public void SpawnPlayer()
     {
         //PlayerObject.SetActive(false);
+        PlayerObject.GetComponent<CharacterController>().enabled = false;
 
         PlayerObject.transform.position = spawnRoom.transform.position;
+        Debug.Log("plr pos: " + PlayerObject.transform.position);
+
+        PlayerObject.GetComponent<CharacterController>().enabled = true;
 
         PlayerObject.SetActive(true);
         MainCameraObject.SetActive(false);

@@ -12,10 +12,10 @@ public class ChunkRenderer : MonoBehaviour
     public GameObject InfiniteHallwayPrefab;
     public GameObject Player;
     public float GameDuration;
-    public LayerMask normalRoom;
+    public LayerMask normalRoom, worldGrid;
 
     private bool alreadySpawnedElevator;
-    private bool shouldSpawnHallway;
+    public bool shouldSpawnHallway;
     private bool hallwayIsSpawned;
     private Vector3 worldGridHallwayIsSpawnedUnder;
     public GameObject infiniteHallwayReferenceInScene;  // destroy this when unloading chunk (instaniate to world grid parent!!)
@@ -44,10 +44,13 @@ public class ChunkRenderer : MonoBehaviour
             worldGridHallwayIsSpawnedUnder = 
                 WorldGridsSpawned.OrderBy(p => p.z).First();
 
+            // offset instead of finding/deleting chunk's pos0 GO prefab
+            var offsetPos = new Vector3(worldGridHallwayIsSpawnedUnder.x, 0, worldGridHallwayIsSpawnedUnder.z - 3);
+
             //Debug.Log("lowest z worldgrid found: " + worldGridHallwayIsSpawnedUnder);
 
             // spawn hall on pos0
-            infiniteHallwayReferenceInScene = Instantiate(InfiniteHallwayPrefab, worldGridHallwayIsSpawnedUnder, Quaternion.identity);
+            infiniteHallwayReferenceInScene = Instantiate(InfiniteHallwayPrefab, offsetPos, Quaternion.identity);
         }
     }
 
@@ -55,6 +58,9 @@ public class ChunkRenderer : MonoBehaviour
     {
         if (other.gameObject.tag == LevelTag)
         {
+            //Debug.Log("go tag: " + other.gameObject.tag);
+            //Debug.Log("go name: " + other.gameObject.name);
+
             SpawnHallway(); 
 
             genMngr.WorldGrid = other.gameObject.transform;
@@ -69,6 +75,12 @@ public class ChunkRenderer : MonoBehaviour
 
             WorldGridsSpawned.Add(other.gameObject.transform.position);
         }
+
+        //else 
+        //{
+        //    Debug.Log("go tag: " + other.gameObject.tag);
+        //    Debug.Log("go name: " + other.gameObject.name);
+        //}
     }
 
     void OnTriggerExit(Collider other)
@@ -94,7 +106,13 @@ public class ChunkRenderer : MonoBehaviour
                 {
                     Debug.Log("checking hall pos: " + hallStartPos);
                     Debug.Log("room abvove pos: " + roomAbovePos);
-                    Instantiate(genMngr.RoomTypes[Random.Range(0, genMngr.RoomTypes.Count)], hallStartPos, Quaternion.identity, genMngr.WorldGrid);
+
+                    // need to instantiate under correct worldgrid
+                    // check sphere for current collider, if tag == level, get GO and instantiate under that!
+                    Collider[] worldGridInScene = Physics.OverlapSphere(hallStartPos, 0.5f, worldGrid);
+                    var parent = worldGridInScene.First(); // should only be 1.. lazy dev
+
+                    Instantiate(genMngr.RoomTypes[Random.Range(0, genMngr.RoomTypes.Count)], hallStartPos, Quaternion.identity, parent.gameObject.transform);
                     hallStartPos = new Vector3(hallStartPos.x, hallStartPos.y, hallStartPos.z - 3);
                     roomAbovePos = new Vector3(roomAbovePos.x, roomAbovePos.y, roomAbovePos.z - 3);
                 }
@@ -110,6 +128,17 @@ public class ChunkRenderer : MonoBehaviour
             }
 
             WorldGridsSpawned.Remove(other.gameObject.transform.position);
+        }
+    }
+
+    public void RemoveOutsideLevel()
+    {
+        var HallStartPos = new Vector3(worldGridHallwayIsSpawnedUnder.x, worldGridHallwayIsSpawnedUnder.y, worldGridHallwayIsSpawnedUnder.z -3);
+        Collider[] RoomsToRemove = Physics.OverlapSphere(HallStartPos, 50, normalRoom);
+
+        foreach (var room in RoomsToRemove)
+        {
+            Destroy(room.gameObject);
         }
     }
 }
