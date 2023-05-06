@@ -12,6 +12,7 @@ public class Lvl7Triggers : MonoBehaviour
     public AudioSource sceneChangeSFX;
     public Animator fallAnim;
     public AudioSource fallSFX;
+    public AudioSource RobotVoice;
 
 
     private bool hasActivated;
@@ -26,6 +27,7 @@ public class Lvl7Triggers : MonoBehaviour
                 newLights.SetActive(true);
 
                 sceneChangeSFX.Play();
+                RobotVoice.Play();
 
                 hasActivated = true;
             }
