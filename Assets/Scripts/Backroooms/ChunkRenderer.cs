@@ -18,6 +18,7 @@ public class ChunkRenderer : MonoBehaviour
     public bool shouldSpawnHallway;
     private bool hallwayIsSpawned;
     private Vector3 worldGridHallwayIsSpawnedUnder;
+    public AudioSource HallwaySpawned;
     public GameObject infiniteHallwayReferenceInScene;  // destroy this when unloading chunk (instaniate to world grid parent!!)
 
     // keep track of vector3's of chunks to spawn hallway at optimal position
@@ -39,6 +40,7 @@ public class ChunkRenderer : MonoBehaviour
         if (shouldSpawnHallway && !hallwayIsSpawned)
         {
             hallwayIsSpawned = true;
+            HallwaySpawned.Play();
 
             // get furthest world grid on z (prioritize lowest z value, so don't have to mess w/ hall rotation)
             worldGridHallwayIsSpawnedUnder = 
