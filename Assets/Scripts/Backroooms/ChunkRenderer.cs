@@ -20,6 +20,10 @@ public class ChunkRenderer : MonoBehaviour
     private Vector3 worldGridHallwayIsSpawnedUnder;
     public AudioSource HallwaySpawned;
     public GameObject infiniteHallwayReferenceInScene;  // destroy this when unloading chunk (instaniate to world grid parent!!)
+    public GameObject HallwayAudiosourceParent;
+    public GameObject HallwayAudiosourcePrefab;
+
+    private GameObject HallwayAudioSource;
 
     // keep track of vector3's of chunks to spawn hallway at optimal position
     public List<Vector3> WorldGridsSpawned;
@@ -48,6 +52,8 @@ public class ChunkRenderer : MonoBehaviour
 
             // offset instead of finding/deleting chunk's pos0 GO prefab
             var offsetPos = new Vector3(worldGridHallwayIsSpawnedUnder.x, 0, worldGridHallwayIsSpawnedUnder.z - 3);
+
+            HallwayAudioSource = Instantiate(HallwayAudiosourcePrefab, offsetPos, Quaternion.identity, HallwayAudiosourceParent.transform);  // spawn empty chunk
 
             //Debug.Log("lowest z worldgrid found: " + worldGridHallwayIsSpawnedUnder);
 
@@ -125,12 +131,30 @@ public class ChunkRenderer : MonoBehaviour
                 Debug.Log("destroying hallway at: " + oldPos);
                 Destroy(infiniteHallwayReferenceInScene);
 
-                
-                hallwayIsSpawned = false;
+                // turn down hallway as slowly
+                StartCoroutine(DecreaseAudio());
+
+                Invoke(nameof(EnableHallwaySpawning), 8f);
             }
 
             WorldGridsSpawned.Remove(other.gameObject.transform.position);
         }
+    }
+
+    private IEnumerator DecreaseAudio()
+    {
+        while (HallwayAudioSource.GetComponent<AudioSource>().volume > 0)
+        {
+            HallwayAudioSource.GetComponent<AudioSource>().volume -= 0.05f * Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(HallwayAudioSource);
+    }
+
+    private void EnableHallwaySpawning()
+    {
+        hallwayIsSpawned = false;
     }
 
     public void RemoveOutsideLevel()
