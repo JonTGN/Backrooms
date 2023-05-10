@@ -134,7 +134,7 @@ public class ChunkRenderer : MonoBehaviour
                 // turn down hallway as slowly
                 StartCoroutine(DecreaseAudio());
 
-                Invoke(nameof(EnableHallwaySpawning), 8f);
+                Invoke(nameof(EnableHallwaySpawning), 12f);
             }
 
             WorldGridsSpawned.Remove(other.gameObject.transform.position);
@@ -143,13 +143,14 @@ public class ChunkRenderer : MonoBehaviour
 
     private IEnumerator DecreaseAudio()
     {
-        while (HallwayAudioSource.GetComponent<AudioSource>().volume > 0)
+        var tempHallwayAudioSource = HallwayAudioSource.GetComponent<AudioSource>();
+        while (tempHallwayAudioSource.volume > 0)
         {
-            HallwayAudioSource.GetComponent<AudioSource>().volume -= 0.05f * Time.deltaTime;
+            tempHallwayAudioSource.volume -= 0.15f * Time.deltaTime;
             yield return null;
         }
 
-        Destroy(HallwayAudioSource);
+        Destroy(tempHallwayAudioSource.gameObject);
     }
 
     private void EnableHallwaySpawning()
