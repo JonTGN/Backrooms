@@ -23,8 +23,8 @@ public class ElevatorController : MonoBehaviour
 
         game_start.Play();
 
-        Invoke(nameof(OpenSound), 61);
-        Invoke(nameof(OpenDoor), 61);
+        Invoke(nameof(OpenSound), 42);
+        Invoke(nameof(OpenDoor), 42);
     }
 
     void OpenDoor()

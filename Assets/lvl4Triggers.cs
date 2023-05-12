@@ -33,23 +33,27 @@ public class lvl4Triggers : MonoBehaviour
             {
                 Invoke(nameof(PlayAudio), 1f);
                 Invoke(nameof(OpenDoor), 9f);  // open door anim calls sfx
+                alreadyPlayed = true;
             }
 
             if (headBanging && !alreadyPlayed)
             {
                 Invoke(nameof(HeadBanging), 9f);
+                alreadyPlayed = true;
             }
 
             if (openLvl5Door && !alreadyPlayed)
             {
                 doorScript.playCreakSound = true;
                 doorAnim.SetBool("open", true);
+                alreadyPlayed = true;
             }
         }
     }
 
     private void PlayAudio()
     {
+        Debug.Log("insidep play audio");
         creepyDrone.Play();
         Invoke(nameof(DisableGO), 6f);
     }

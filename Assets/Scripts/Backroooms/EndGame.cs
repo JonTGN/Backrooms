@@ -12,6 +12,8 @@ public class EndGame : MonoBehaviour
     public AudioSource jumpscareSoundEffect;
     public Animator monsterAnim;
 
+    public AudioSource ChaseAudio;
+
     private void Start()
     {
         oldPlr = Camera.main.gameObject.transform.parent.gameObject.transform.parent.gameObject;
@@ -21,12 +23,13 @@ public class EndGame : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            ChaseAudio.gameObject.SetActive(false);
             oldPlr.SetActive(false);
             newPlr.SetActive(true);
 
             newPlr.GetComponent<CharacterController>().enabled = false;
 
-            Invoke(nameof(TriggerJumpscare), 2f);
+            Invoke(nameof(TriggerJumpscare), 6f);
         }
     }
 

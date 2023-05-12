@@ -16,11 +16,15 @@ public class HallwayTriggers : MonoBehaviour
     public GameObject GeneratedLightsParent;
     public Animator MonsterAnim;
     public MonsterChase monsterChase;
+    private GameObject oldSound;
+    public AudioSource newAmbientSound;
+    public AudioSource newChaseSound;
 
     private bool alreadyPlayed;
 
     void Start()
     {
+        oldSound = GameObject.Find("HallwayAudioSourceParent"); // bad but ok if its only once
         Player = Camera.main.transform.parent.parent.gameObject;
         Debug.Log("Player is: " + Player.name);
 
@@ -50,9 +54,23 @@ public class HallwayTriggers : MonoBehaviour
 
     private void StartMonsterChase()
     {
+        Invoke(nameof(SetMonsterAnims), 2f);
+
+        oldSound.SetActive(false);
+        newAmbientSound.Play();
+        Invoke(nameof(PlayChaseSound), 2f);
+    }
+
+    private void SetMonsterAnims()
+    {
         MonsterAnim.SetBool("charge", true);
-        
+
         monsterChase.ShouldChase = true;
+    }
+
+    private void PlayChaseSound()
+    {
+        newChaseSound.Play();
     }
 
     public IEnumerator DestroyLights()
