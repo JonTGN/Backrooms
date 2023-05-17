@@ -27,6 +27,7 @@ public class GenerationManager : MonoBehaviour
     public List<GameObject> HiddenRooms; // rooms that would have generated if hallway wasn't present, store in case hallway despawns
     [SerializeField] GameObject PlayerObject, MainCameraObject;
     public LayerMask hallwayLayer;
+    [SerializeField] AudioSource AnomalyDetectedAS;
     
     [Header("Settings")]
     public int mapEmptiness = 4; // chance of empty room spawning
@@ -181,11 +182,18 @@ public class GenerationManager : MonoBehaviour
     public void SpawnPlayer()
     {
         //PlayerObject.SetActive(false);
+        PlayerObject.GetComponent<CharacterController>().enabled = false;
 
         PlayerObject.transform.position = spawnRoom.transform.position;
+        Debug.Log("plr pos: " + PlayerObject.transform.position);
+
+        PlayerObject.GetComponent<CharacterController>().enabled = true;
 
         PlayerObject.SetActive(true);
         MainCameraObject.SetActive(false);
+
+        AnomalyDetectedAS.Play();
+
     }
 
     public void NextState()

@@ -8,10 +8,13 @@ public class VerifyPlayerDistance : MonoBehaviour
     float angle;
     bool readyToHide;
     bool isLookingInRightDirection;
-    [SerializeField] private GetPlayerAngle getPlayerAngle;
+    public GetPlayerAngle getPlayerAngle;
+    public light_creak light_Creak;
 
-    public GameObject elevator;
-    public GameObject ceiling;
+    public GameObject go_to_hide;
+    public GameObject go_to_show;
+    public AudioSource radio;
+    private bool triggerDone;
 
     void Start()
     {
@@ -21,48 +24,65 @@ public class VerifyPlayerDistance : MonoBehaviour
 
     void Update()
     {
+        /*
         CheckDirection(); // check if player is facing correct way
 
-        if (readyToHide && isLookingInRightDirection)
+        if (readyToHide && isLookingInRightDirection && !triggerDone)
         {
             // hide elevator and show rest of hallway
-            elevator.SetActive(false);
-            ceiling.SetActive(true);
+            go_to_hide.SetActive(false);
+            go_to_show.SetActive(true);
             getPlayerAngle.shouldCheckForAngle = false;
+            radio.Play();
+            light_Creak.isActive = true;
+            triggerDone = true;
         }
+        */
     }
 
     private void CheckDirection()
     {
-        angle = getPlayerAngle.angle;
+        //angle = getPlayerAngle.angle;
 
-        if (angle > 20 && angle < 150)
-            isLookingInRightDirection = true;
-        else
-            isLookingInRightDirection = false;
+        //if (angle > 120 && angle < 230)
+        //    isLookingInRightDirection = true;
+        //else
+        //    isLookingInRightDirection = false;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // player has passed trigger, can hide elevator if looking in right dir
-            if (plrCam.transform.position.x > gameObject.transform.position.x)
-                readyToHide = true;
+        //if (other.gameObject.CompareTag("Player"))
+        //{
+        //    // player has passed trigger, can hide elevator if looking in right dir
+        //    if (plrCam.transform.position.x > gameObject.transform.position.x)
+        //        readyToHide = true;
 
-            // player has went back into the elevator
-            else
-                readyToHide = false;
-        }
+        //    // player has went back into the elevator
+        //    else
+        //        readyToHide = false;
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // player has entered trigger at this spot they are going back in the elevator
-            if (plrCam.transform.position.x > gameObject.transform.position.x)
-                readyToHide = false;
+            //// player has entered trigger at this spot they are going back in the elevator
+            //if (plrCam.transform.position.x > gameObject.transform.position.x)
+            //    readyToHide = false;
+            ShowHallway();
         }
+    }
+
+    private void ShowHallway()
+    {
+        // hide elevator and show rest of hallway
+        go_to_hide.SetActive(false);
+        go_to_show.SetActive(true);
+        getPlayerAngle.shouldCheckForAngle = false;
+        radio.Play();
+        light_Creak.isActive = true;
+        triggerDone = true;
     }
 }

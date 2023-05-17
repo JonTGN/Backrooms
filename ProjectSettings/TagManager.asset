@@ -11,6 +11,7 @@ TagManager:
   - Level
   - Elevator
   - GeneratedLightsTag
+  - Lever
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ public class GetPlayerAngle : MonoBehaviour
             forward.y = 0; // only want dir in x/z plane
             angle = Quaternion.LookRotation(forward).eulerAngles.y;
 
-            if (angle > 180f) angle -= 360f;
+            //if (angle > 180f) angle -= 360f;
 
             //Debug.Log("angle: " + angle);
         }

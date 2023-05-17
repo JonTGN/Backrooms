@@ -15,10 +15,15 @@ public class ChunkRenderer : MonoBehaviour
     public LayerMask normalRoom, worldGrid;
 
     private bool alreadySpawnedElevator;
-    private bool shouldSpawnHallway;
+    public bool shouldSpawnHallway;
     private bool hallwayIsSpawned;
     private Vector3 worldGridHallwayIsSpawnedUnder;
+    public AudioSource HallwaySpawned;
     public GameObject infiniteHallwayReferenceInScene;  // destroy this when unloading chunk (instaniate to world grid parent!!)
+    public GameObject HallwayAudiosourceParent;
+    public GameObject HallwayAudiosourcePrefab;
+
+    private GameObject HallwayAudioSource;
 
     // keep track of vector3's of chunks to spawn hallway at optimal position
     public List<Vector3> WorldGridsSpawned;
@@ -39,6 +44,7 @@ public class ChunkRenderer : MonoBehaviour
         if (shouldSpawnHallway && !hallwayIsSpawned)
         {
             hallwayIsSpawned = true;
+            HallwaySpawned.Play();
 
             // get furthest world grid on z (prioritize lowest z value, so don't have to mess w/ hall rotation)
             worldGridHallwayIsSpawnedUnder = 
@@ -46,6 +52,8 @@ public class ChunkRenderer : MonoBehaviour
 
             // offset instead of finding/deleting chunk's pos0 GO prefab
             var offsetPos = new Vector3(worldGridHallwayIsSpawnedUnder.x, 0, worldGridHallwayIsSpawnedUnder.z - 3);
+
+            HallwayAudioSource = Instantiate(HallwayAudiosourcePrefab, offsetPos, Quaternion.identity, HallwayAudiosourceParent.transform);  // spawn empty chunk
 
             //Debug.Log("lowest z worldgrid found: " + worldGridHallwayIsSpawnedUnder);
 
@@ -123,11 +131,41 @@ public class ChunkRenderer : MonoBehaviour
                 Debug.Log("destroying hallway at: " + oldPos);
                 Destroy(infiniteHallwayReferenceInScene);
 
-                
-                hallwayIsSpawned = false;
+                // turn down hallway as slowly
+                StartCoroutine(DecreaseAudio());
+
+                Invoke(nameof(EnableHallwaySpawning), 12f);
             }
 
             WorldGridsSpawned.Remove(other.gameObject.transform.position);
+        }
+    }
+
+    private IEnumerator DecreaseAudio()
+    {
+        var tempHallwayAudioSource = HallwayAudioSource.GetComponent<AudioSource>();
+        while (tempHallwayAudioSource.volume > 0)
+        {
+            tempHallwayAudioSource.volume -= 0.15f * Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(tempHallwayAudioSource.gameObject);
+    }
+
+    private void EnableHallwaySpawning()
+    {
+        hallwayIsSpawned = false;
+    }
+
+    public void RemoveOutsideLevel()
+    {
+        var HallStartPos = new Vector3(worldGridHallwayIsSpawnedUnder.x, worldGridHallwayIsSpawnedUnder.y, worldGridHallwayIsSpawnedUnder.z -3);
+        Collider[] RoomsToRemove = Physics.OverlapSphere(HallStartPos, 50, normalRoom);
+
+        foreach (var room in RoomsToRemove)
+        {
+            Destroy(room.gameObject);
         }
     }
 }
